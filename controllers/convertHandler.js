@@ -1,3 +1,5 @@
+const { init } = require("create-react-app/createReactApp");
+
 function ConvertHandler() {
   
   this.getNum = function(input) {
@@ -116,6 +118,30 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     let result;
+
+    // Convert numbers based on units "gal", "l", "mi", "km", "lbs", "kg"
+    switch (initUnit) {
+      case "gal":
+        result = initNum * galToL;
+        break;
+      case "l":
+        result = initNum / galToL;
+        break;
+      case "lbs":
+        result = initNum * lbsToKg;
+        break;
+      case "kg":
+        result = initNum / lbsToKg;
+        break;
+      case "mi":
+        result = initNum * miToKm;
+        break;
+      case "km":
+        result = initNum / miToKm;
+        break;
+      default:
+        result = "invalid input";
+    }
     
     return result;
   };
