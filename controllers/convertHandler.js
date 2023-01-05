@@ -51,12 +51,62 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     let result;
+
+    // Evaluate initUnit and return unit accordingly
+    switch (initUnit) {
+      case "gal":
+        result = "L";
+        break;
+      case "l":
+        result = "gal";
+        break;
+      case "mi":
+        result = "km";
+        break;
+      case "km":
+        result = "mi";
+        break;
+      case "lbs":
+        result = "kg";
+        break;
+      case "kg":
+        result = "lbs";
+        break;
+      default:
+        result = "invalid unit"
+    }
     
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     let result;
+
+    let lowerCaseUnit = unit.toLowerCase()
+
+    // Get  unit spelling according to output from this.getReturnUnit "gal", "l", "mi", "km", "lbs", "kg"
+    switch (lowerCaseUnit) {
+      case "gal":
+        result = "gallons";
+        break;
+      case "l":
+        result = "liters";
+        break;
+      case "mi":
+        result = "miles";
+        break;
+      case "km":
+        result = "kilometers";
+        break;
+      case "lbs":
+        result = "pounds";
+        break;
+      case "kg":
+        result = "kilograms";
+        break;
+      default:
+        result = "invalid unit"
+    }
     
     return result;
   };
