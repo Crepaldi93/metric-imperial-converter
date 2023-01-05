@@ -131,12 +131,12 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     let result;
 
-    // Convert numbers based on units "gal", "l", "mi", "km", "lbs", "kg"
+    // Convert numbers based on units "gal", "L", "mi", "km", "lbs", "kg"
     switch (initUnit) {
       case "gal":
         result = initNum * galToL;
         break;
-      case "l":
+      case "L":
         result = initNum / galToL;
         break;
       case "lbs":
