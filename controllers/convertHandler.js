@@ -2,6 +2,19 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     let result;
+
+    // Define regular expression to extract integer, float or fraction numbers
+    let regEx = /[\d\.\/]+/
+
+    // Extract number from string
+    let numberString = string.match(regEx)
+
+    // Check if number is null, integer, decimal or fraction and return result accordingly
+    if ()
+
+
+
+
     
     return result;
   };
