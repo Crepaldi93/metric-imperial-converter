@@ -9,10 +9,16 @@ function ConvertHandler() {
     let regEx = /[\d\.\/]+/;
 
     // Extract number from string
-    let numberString = input.match(regEx);
+    let numberString;
+    let numberArray = input.match(regEx);
+    if (numberArray) {
+      numberString = numberArray[0];
+    } else {
+      numberString = null;
+    }
 
     // Check if number is null, integer, decimal or fraction and return result accordingly
-    if (!numberString) {
+    if (numberString === null) {
       result = 1
     } else if (numberString.includes("/")) {
       let divisionNumbers = numberString.split("/");
@@ -38,11 +44,17 @@ function ConvertHandler() {
     // Get string without the characters defined in the regular expression
     let myUnit = input.replace(regEx, "").toLowerCase()
 
+    // Switch "l" to "L"
+    if (myUnit === "l") {
+      myUnit = "L";
+    }
+
     // Create array of units supported by the app
-    let unitsArray = ["gal", "l", "mi", "km", "lbs", "kg"]
+    let unitsArray = ["gal", "L", "mi", "km", "lbs", "kg"]
 
     // Return unit string if valid or error message if invalid
     if (unitsArray.includes(myUnit)) {
+
       result = myUnit
     } else {
       result = "invalid unit"
@@ -59,7 +71,7 @@ function ConvertHandler() {
       case "gal":
         result = "L";
         break;
-      case "l":
+      case "L":
         result = "gal";
         break;
       case "mi":
@@ -122,7 +134,7 @@ function ConvertHandler() {
     // Convert numbers based on units "gal", "l", "mi", "km", "lbs", "kg"
     switch (initUnit) {
       case "gal":
-        result = (initNum * galToL).toFixed(5);
+        result = initNum * galToL;
         break;
       case "l":
         result = initNum / galToL;
@@ -144,7 +156,7 @@ function ConvertHandler() {
     }
 
     if (result !== "invalid input" && result % 1 !== 0) {
-      result = result.toFixed(5);
+      result = parseFloat(result.toFixed(5));
     }
     
     return result;

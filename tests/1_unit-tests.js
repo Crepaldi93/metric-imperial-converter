@@ -91,13 +91,13 @@ suite('Unit Tests', function(){
         });
     });
 
-    suite('Function converHandler.convert(initNum, initUnit)', () => {
+    suite('Function convertHandler.convert(initNum, initUnit)', () => {
         test('For each input', (done) => {
             let input = ["gal", "L", "mi", "km", "lbs", "kg"];
             let expect = [3.78541, 0.26417, 1.60934, 0.62137, 0,45359, 2,20462];
 
             input.forEach((i,j) => {
-                assert.equal(converHandler.convert(1, i), expect[j]);
+                assert.equal(convertHandler.convert(1, i), expect[j]);
                 done();
             });
         })
