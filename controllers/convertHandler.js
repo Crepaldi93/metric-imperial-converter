@@ -122,7 +122,7 @@ function ConvertHandler() {
     // Convert numbers based on units "gal", "l", "mi", "km", "lbs", "kg"
     switch (initUnit) {
       case "gal":
-        result = initNum * galToL;
+        result = (initNum * galToL).toFixed(5);
         break;
       case "l":
         result = initNum / galToL;
@@ -142,6 +142,10 @@ function ConvertHandler() {
       default:
         result = "invalid input";
     }
+
+    if (result !== "invalid input" && result % 1 !== 0) {
+      result = result.toFixed(5);
+    }
     
     return result;
   };
@@ -150,7 +154,7 @@ function ConvertHandler() {
     let result;
 
     // Set string for output
-    result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum.toFixed(5)} ${this.spellOutUnit(returnUnit)}`
+    result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`
     
     return result;
   };
