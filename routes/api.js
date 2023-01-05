@@ -26,6 +26,6 @@ module.exports = function (app) {
 
     let myString = convertHandler.getString(myNumber,myUnit,myReturnNumber,myReturnUnit);
 
-    return res.send(myString);
+    return res.json({initNum: myNumber, initUnit: myUnit, returnNum: myReturnNumber, returnUnit: myReturnUnit, string: myString});
   });
 };
