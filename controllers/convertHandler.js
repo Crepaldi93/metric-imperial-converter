@@ -5,20 +5,15 @@ function ConvertHandler() {
   this.getNum = function(input) {
     let result;
 
-    // Define regular expression to extract integer, float or fraction numbers
-    let regEx = /[\d\.\/]+/;
+    // Define regular expression to get match of first letter
+    let regEx = /[A-Za-z]/;
 
     // Extract number from string
-    let numberString;
-    let numberArray = input.match(regEx);
-    if (numberArray) {
-      numberString = numberArray[0];
-    } else {
-      numberString = null;
-    }
+    let myMatch = regEx.exec(input);
+    let numberString = input.split(myMatch)[0];
 
     // Check if number is null, integer, decimal or fraction and return result accordingly
-    if (numberString === null) {
+    if (!numberString) {
       result = 1
     } else if (numberString.includes("/")) {
       let divisionNumbers = numberString.split("/");
@@ -38,11 +33,11 @@ function ConvertHandler() {
   this.getUnit = function(input) {
     let result;
 
-    // Define regular expression to extract integer, float or fraction numbers
-    let regEx = /[\d\.\/]+/;
+    // Define regular expression to get anything that starts with a letter
+    let regEx = /[A-Za-z]\w*/;
 
-    // Get string without the characters defined in the regular expression
-    let myUnit = input.replace(regEx, "").toLowerCase()
+    // Get string starting with the first letter of the input and set it to lower case
+    let myUnit = input.match(regEx)[0].toLowerCase();
 
     // Switch "l" to "L"
     if (myUnit === "l") {
