@@ -18,7 +18,7 @@ function ConvertHandler() {
     } else if (numberString.includes("/")) {
       let divisionNumbers = numberString.split("/");
 
-      if (divisionNumbers.length > 2 || divisionNumbers[1] == 0) {
+      if (divisionNumbers.length > 2 || divisionNumbers[1] == 0 || isNaN(divisionNumbers[0]) || isNaN(divisionNumbers[1])) {
         result = "invalid number";
       } else {
         result = divisionNumbers[0] / divisionNumbers[1];
